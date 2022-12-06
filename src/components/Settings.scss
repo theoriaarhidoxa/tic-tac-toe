@@ -1,0 +1,110 @@
+.overlay {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(247, 109, 17, .8);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  animation: animateOverlay .5s ease-in 1;
+}
+
+.settings {
+  position: fixed;
+  left: 50%;
+  width: 600px;
+  padding: 20px 20px 10px;
+  background-color: #fff;
+  margin-left: -300px;
+  animation: animateModal .5s ease-in 1;
+  top: 200px;
+
+
+  &__form {
+
+    &-item {
+      display: flex;
+      justify-content: flex-start;
+      flex-flow: row wrap;
+      margin: 0 0 20px;
+      width: 100%;
+
+      label {
+        display: block;
+        width: 100%;
+        text-align: left;
+        margin: 0 0 5px;
+      }
+
+      input, button, select {
+        padding: 10px;
+        border: 1px solid #ccc;
+        transition: border-color .4s ease;
+        text-align: left;
+        width: 100%;
+
+        &[disabled] {
+          &:hover {
+            border-color: #ccc;
+            cursor: not-allowed;
+          }
+        }
+
+        &:hover {
+          border-color: #169bd5;
+        }
+
+        &[type="text"] {
+           cursor: auto;
+
+          &.error {
+            border-color: crimson;
+          }
+        }
+
+        &[type="submit"], &[type="button"] {
+          width: auto; margin-right: 5px;
+          cursor: pointer;
+        }
+        &[type="button"] {
+          background-color: crimson;
+          border-color: #c0c0c0;
+          color: #fff;
+        }
+      }
+    }
+  }
+}
+
+@keyframes animateOverlay {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 100%;
+  }
+}
+
+@keyframes animateModal {
+  from {
+    top: -1000px;
+  }
+
+  to {
+    top: 200px;
+  }
+}
+
+@media all and (max-width: 500px) {
+  .settings {
+    top: 100px;
+    margin: 0;
+    left: 0;
+    width: 100%;
+  }
+}
+
+
